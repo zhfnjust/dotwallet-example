@@ -1,12 +1,12 @@
-import { readFileSync, existsSync } from "fs";
 import { DotwalletSigner, DefaultProvider } from "scrypt-ts";
+import token from "./token"
 
 async function getData() {
-  if (existsSync("access_token.txt")) {
-    const access_token = readFileSync("access_token.txt").toString();
+  if (token.access_token) {
+
     const provider = new DefaultProvider();
 
-    const signer = new DotwalletSigner(access_token, provider)
+    const signer = new DotwalletSigner(token.access_token, provider)
 
     const balance = await signer.getBalance();
 

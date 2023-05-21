@@ -1,6 +1,6 @@
 import { redirect, notFound } from 'next/navigation';
 
-import { writeFileSync } from "fs"
+import token from "../token"
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -24,8 +24,7 @@ export async function GET(request: Request) {
 
     if (apiCode === 0) {
       const { access_token } = data;
-      writeFileSync('access_token.txt', access_token);
-
+      token.access_token = access_token;
       redirect('/');
     }
 
