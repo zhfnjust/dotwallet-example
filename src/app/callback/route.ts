@@ -25,7 +25,8 @@ export async function GET(request: Request) {
     if (apiCode === 0) {
       const { access_token } = data;
       token.access_token = access_token;
-      redirect('/');
+
+      redirect('/balance');
     }
 
   }
