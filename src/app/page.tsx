@@ -1,11 +1,9 @@
 export default async function Home() {
-  const loginUrl = `https://api.ddpurse.com/authorize?client_id=${
-    process.env.CLIENT_ID
-  }&redirect_uri=${encodeURIComponent(
-    process.env.REDIRECT_URI || ""
-  )}&response_type=code&scope=${encodeURIComponent(
-    "user.info"
-  )}&state=${crypto.randomUUID()}`;
+  const client_id = process.env.CLIENT_ID;
+  const redirect_uri = encodeURIComponent(process.env.REDIRECT_URI || '');
+  const scope = encodeURIComponent("user.info autopay.bsv");
+  const state = crypto.randomUUID();
+  const loginUrl = `https://api.ddpurse.com/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code&scope=${scope}&state=${state}`;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
